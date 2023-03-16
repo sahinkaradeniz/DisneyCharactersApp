@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">DisneyCharactersApp</string>
+    <string name="eror">Eror text</string>
+    <string name="enter_character_name">Enter character name</string>
+    <string name="films">Films</string>
+    <string name="shortfilms">Short Films</string>
+    <string name="tvShows">Tv Shows</string>
+    <string name="videoGames">Video Games</string>
 </resources>
