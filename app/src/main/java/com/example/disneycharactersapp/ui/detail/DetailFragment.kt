@@ -1,17 +1,14 @@
 package com.example.disneycharactersapp.ui.detail
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.disneycharactersapp.R
 import com.example.disneycharactersapp.databinding.FragmentDetailBinding
@@ -26,6 +23,8 @@ class DetailFragment : Fragment() {
     private  val binding by viewBinding (FragmentDetailBinding::bind)
     private val viewModel by viewModels<DetailViewModel>()
     private val args: DetailFragmentArgs by navArgs()
+    private val adapter by lazy { DetailParentAdapter(requireContext()) }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -50,21 +49,20 @@ class DetailFragment : Fragment() {
                 is DetailUiState.Success ->{
                     viewSucces()
                     setDetailData(it.data)
-                    val adapter = DetailParentAdapter(
+                    println(" data " + it.data.toString())
+                    adapter.updateItems(
                         listOfNotNull(
                             it.data.films,
                             it.data.tvShows,
                             it.data.videoGames,
                             it.data.shortFilms
                         )
-                    ,requireContext())
-                    println(" data " + it.data.toString())
+                    )
                     binding.detailRcv.adapter=adapter
                     binding.detailRcv.layoutManager=LinearLayoutManager(requireContext())
-                 //   Toast.makeText(requireContext(), "succes", Toast.LENGTH_SHORT).show()
                 }
                 is DetailUiState.Error ->{
-                    Log.e("view state","Data loading eror")
+                    Log.e("view state","Data loading eror, ${it.message}")
                 }
             }
         }

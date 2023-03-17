@@ -4,7 +4,7 @@ import com.example.disneycharactersapp.data.dto.filtercharacter.FilterData
 import com.example.disneycharactersapp.domain.mapper.allcharacter.DisneyCharacterListMapper
 import javax.inject.Inject
 
-class SearchHomeUiMapperImpl @Inject
+class SearchHomeUiMapper @Inject
 constructor() :DisneyCharacterListMapper<FilterData,HomeUiData>{
     override fun map(input: List<FilterData>?): List<HomeUiData> {
         return input?.map {
