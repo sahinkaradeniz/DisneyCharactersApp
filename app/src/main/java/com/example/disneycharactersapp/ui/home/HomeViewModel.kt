@@ -25,11 +25,13 @@ class HomeViewModel @Inject constructor(
     private val _disneyHomeUiState=MutableLiveData<HomeUiState>()
     val disneyHomeUiState:LiveData<HomeUiState>  get() = _disneyHomeUiState
 
-    fun searchDisneyCharacters(name:String) {
+    var allDisneyCharacters: List<HomeUiData>? = null
+
+    fun searchDisneyCharacters(name: String) {
         getSearchCharacterUseCase(nameText = name).onEach {
-            when(it){
+            when (it) {
                 is NetworkResponse.Error -> {
-                    _disneyHomeUiState.postValue(HomeUiState.Error(R.string.eror))
+                    _disneyHomeUiState.value = HomeUiState.Error(R.string.eror)
                 }
                 NetworkResponse.Loading -> {
                     _disneyHomeUiState.postValue(HomeUiState.Loading)
@@ -43,15 +45,17 @@ class HomeViewModel @Inject constructor(
 
     fun getDisneyCharacters(){
         getDisneyUseCase().onEach {
-            when(it){
-                is NetworkResponse.Error ->{
-                    _disneyHomeUiState.postValue(HomeUiState.Error(R.string.eror))
+            when (it) {
+                is NetworkResponse.Error -> {
+                    _disneyHomeUiState.value = HomeUiState.Error(R.string.eror)
                 }
-                is NetworkResponse.Loading ->{
-                    _disneyHomeUiState.postValue(HomeUiState.Loading)
+                is NetworkResponse.Loading -> {
+                    _disneyHomeUiState.value = HomeUiState.Loading
                 }
-                is NetworkResponse.Success ->{
-                    _disneyHomeUiState.postValue(HomeUiState.Success(disneyCharacterMapper.map(it.result)))
+                is NetworkResponse.Success -> {
+                    val data = disneyCharacterMapper.map(it.result)
+                    _disneyHomeUiState.value = HomeUiState.Success(data)
+                    allDisneyCharacters = data
                 }
             }
         }.launchIn(viewModelScope)

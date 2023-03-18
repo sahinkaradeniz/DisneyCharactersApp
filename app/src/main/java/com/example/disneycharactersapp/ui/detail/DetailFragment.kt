@@ -12,18 +12,19 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.disneycharactersapp.R
 import com.example.disneycharactersapp.databinding.FragmentDetailBinding
+import com.example.disneycharactersapp.ui.base.BaseFragment
 import com.example.disneycharactersapp.util.downloadFromUrl
-import com.example.disneycharactersapp.util.hide
-import com.example.disneycharactersapp.util.show
+import com.example.disneycharactersapp.util.gone
+import com.example.disneycharactersapp.util.visible
 import com.example.disneycharactersapp.util.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DetailFragment : Fragment() {
+class DetailFragment : BaseFragment() {
     private  val binding by viewBinding (FragmentDetailBinding::bind)
     private val viewModel by viewModels<DetailViewModel>()
     private val args: DetailFragmentArgs by navArgs()
-    private val adapter by lazy { DetailParentAdapter(requireContext()) }
+    private val adapter by lazy { DetailParentAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,7 +51,7 @@ class DetailFragment : Fragment() {
                     viewSucces()
                     setDetailData(it.data)
                     println(" data " + it.data.toString())
-                    adapter.updateItems(
+                    adapter.submitList(
                         listOfNotNull(
                             it.data.films,
                             it.data.tvShows,
@@ -69,12 +70,12 @@ class DetailFragment : Fragment() {
     }
 
     private fun viewLoading(){
-        binding.progressBar2.show()
-        binding.companentView.hide()
+        showProgress()
+        binding.root.gone()
     }
     private fun viewSucces(){
-        binding.progressBar2.hide()
-        binding.companentView.show()
+        hideProgress()
+        binding.root.visible()
     }
     private fun back(){
         binding.backButton.setOnClickListener {

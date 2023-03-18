@@ -8,12 +8,11 @@ abstract class BaseRecyclerViewAdapter <T :Any , VH:BaseViewHolder<T>>:RecyclerV
 
     private val items = mutableListOf<T>()
 
-    fun updateItems(newItems:List<T>) {
+    fun submitList(newItems:List<T>) {
         items.apply {
             notifyItemRangeRemoved(0,itemCount)
             clear()
             addAll(newItems)
-        //    notifyDataSetChanged()
             notifyItemRangeInserted(0,items.count())
         }
     }

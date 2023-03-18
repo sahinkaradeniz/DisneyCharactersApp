@@ -1,25 +1,21 @@
 package com.example.disneycharactersapp.ui.detail
 
-import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.disneycharactersapp.databinding.DetailChildItemBinding
 import com.example.disneycharactersapp.domain.ProductTypes
 import com.example.disneycharactersapp.domain.Products
 import com.example.disneycharactersapp.ui.base.BaseViewHolder
-import com.example.disneycharactersapp.util.hide
+import com.example.disneycharactersapp.util.gone
 import com.example.disneycharactersapp.util.inflateAdapterItem
-import com.example.disneycharactersapp.util.show
-import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
+import com.example.disneycharactersapp.util.visible
 
-class DetailParentViewHolder @Inject constructor(
-    private val binding: DetailChildItemBinding,
-    @ApplicationContext  val context : Context,
+class DetailParentViewHolder constructor(
+    private val binding: DetailChildItemBinding
 ) : BaseViewHolder<Products>(binding.root) {
     companion object {
-        fun createFrom(parent: ViewGroup,@ApplicationContext context: Context) =
-            DetailParentViewHolder(parent.inflateAdapterItem(DetailChildItemBinding::inflate),context)
+        fun createFrom(parent: ViewGroup) =
+            DetailParentViewHolder(parent.inflateAdapterItem(DetailChildItemBinding::inflate))
     }
 
     private val adapter by lazy { DetailChildAdapter() }
@@ -32,13 +28,13 @@ class DetailParentViewHolder @Inject constructor(
             else -> ""
         }
         if (data.products.isEmpty()) {
-            binding.cardChildItem.hide()
+            binding.cardChildItem.gone()
         } else {
-            binding.cardChildItem.show()
+            binding.cardChildItem.visible()
             binding.categoryText.text = title
+            binding.childRcv.layoutManager = LinearLayoutManager(binding.root.context)
             binding.childRcv.adapter = adapter
-            adapter.updateItems(data.products)
-            binding.childRcv.layoutManager = LinearLayoutManager(context)
+            adapter.submitList(data.products)
         }
     }
 }
