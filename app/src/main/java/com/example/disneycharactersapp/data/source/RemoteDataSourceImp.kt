@@ -3,14 +3,13 @@ package com.example.disneycharactersapp.data.source
 import android.util.Log
 import com.example.disneycharactersapp.data.NetworkResponse
 import com.example.disneycharactersapp.data.api.DisneyCharactersApi
-import com.example.disneycharactersapp.data.dto.allcharacter.CharacterData
 import com.example.disneycharactersapp.data.dto.character.CharacterResponse
 import com.example.disneycharactersapp.data.dto.filtercharacter.FilterData
 import javax.inject.Inject
 
 class RemoteDataSourceImp @Inject constructor (private val disneyCharactersApi: DisneyCharactersApi):RemoteDataSource {
     val TAG =" Remote Data Source Impl"
-    override suspend fun getAllDisneyCharacters(): NetworkResponse<List<CharacterData>> =
+    override suspend fun getAllDisneyCharacters(): NetworkResponse<List<CharacterResponse>> =
        try {
             val response=disneyCharactersApi.getAllCharacters()
             NetworkResponse.Success(response.data)

@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 class GetDisneyCharacterUseCaseImpl @Inject constructor(
     private val disneyRepository: DisneyRepository,
-    private val characterDomainMapper: DisneyCharacterMapper<CharacterResponse, CharacterDetailEntity>
+    private val characterResponseDomainMapper: DisneyCharacterMapper<CharacterResponse, CharacterDetailEntity>
 ): GetDisneyCharacterUseCase {
     override fun invoke(id:Int): Flow<NetworkResponse<CharacterDetailEntity>> =  flow {
         emit(NetworkResponse.Loading)
@@ -19,7 +19,7 @@ class GetDisneyCharacterUseCaseImpl @Inject constructor(
             is NetworkResponse.Error -> emit(response)
             is NetworkResponse.Loading -> Unit
             is NetworkResponse.Success -> emit(
-                NetworkResponse.Success(characterDomainMapper.map(response.result))
+                NetworkResponse.Success(characterResponseDomainMapper.map(response.result))
             )
         }
     }

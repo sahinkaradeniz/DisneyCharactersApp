@@ -12,8 +12,8 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.disneycharactersapp.R
 import com.example.disneycharactersapp.databinding.FragmentDetailBinding
+import com.example.disneycharactersapp.util.downloadFromUrl
 import com.example.disneycharactersapp.util.hide
-import com.example.disneycharactersapp.util.loadUrl
 import com.example.disneycharactersapp.util.show
 import com.example.disneycharactersapp.util.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -86,7 +86,7 @@ class DetailFragment : Fragment() {
         viewModel.getDisneyCharacter(id)
     }
     private fun setDetailData(data:DetailUiData){
-        binding.imageCharacter.loadUrl(data.imageUrl)
+        binding.imageCharacter.downloadFromUrl(data.imageUrl)
         binding.nameCharacter.text=data.name
     }
 

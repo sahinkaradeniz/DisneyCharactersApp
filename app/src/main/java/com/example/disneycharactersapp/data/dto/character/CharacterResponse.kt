@@ -1,20 +1,18 @@
 package com.example.disneycharactersapp.data.dto.character
-
 import com.google.gson.annotations.SerializedName
 
 
 data class CharacterResponse (
 
-    @SerializedName("_id"             ) var Id              : Int?              = null,
-    @SerializedName("films"           ) var films           : List<String> = arrayListOf(),
-    @SerializedName("shortFilms"      ) var shortFilms      : List<String> = arrayListOf(),
-    @SerializedName("tvShows"         ) var tvShows         : List<String> = arrayListOf(),
-    @SerializedName("videoGames"      ) var videoGames      : List<String> = arrayListOf(),
-    @SerializedName("parkAttractions" ) var parkAttractions : List<String> = arrayListOf(),
-    @SerializedName("allies"          ) var allies          : List<String> = arrayListOf(),
-    @SerializedName("enemies"         ) var enemies         : List<String> = arrayListOf(),
-    @SerializedName("name"            ) var name            : String?           = null,
-    @SerializedName("imageUrl"        ) var imageUrl        : String?           = null,
-    @SerializedName("url"             ) var url             : String?           = null
-
+    @SerializedName("films"           ) var films           : List<String> ,
+    @SerializedName("shortFilms"      ) var shortFilms      : List<String> ,
+    @SerializedName("tvShows"         ) var tvShows         : List<String> ,
+    @SerializedName("videoGames"      ) var videoGames      : List<String> ,
+    @SerializedName("parkAttractions" ) var parkAttractions : List<String> ,
+    @SerializedName("allies"          ) var allies          : List<String> ,
+    @SerializedName("enemies"         ) var enemies         : List<String>,
+    @SerializedName("_id"             ) var Id              : Int,
+    @SerializedName("name"            ) var name            : String,
+    @SerializedName("imageUrl"        ) var imageUrl        : String,
+    @SerializedName("url"             ) var url             : String
 )

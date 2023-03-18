@@ -1,6 +1,5 @@
 package com.example.disneycharactersapp.di.mapper
 
-import com.example.disneycharactersapp.data.dto.allcharacter.CharacterData
 import com.example.disneycharactersapp.data.dto.character.CharacterResponse
 import com.example.disneycharactersapp.data.dto.filtercharacter.FilterData
 import com.example.disneycharactersapp.domain.CharacterDetailEntity
@@ -10,7 +9,6 @@ import com.example.disneycharactersapp.domain.mapper.allcharacter.DisneyCharacte
 import com.example.disneycharactersapp.domain.mapper.allcharacter.DisneyCharacterListMapper
 import com.example.disneycharactersapp.domain.mapper.character.CharacterDomainMapperImpl
 import com.example.disneycharactersapp.domain.mapper.character.DisneyCharacterMapper
-import com.example.disneycharactersapp.domain.mapper.search.DisneySearchCharacterListMapper
 import com.example.disneycharactersapp.domain.mapper.search.SearchCharacterDomainListMapperImp
 import com.example.disneycharactersapp.ui.detail.CharacterDetailUiMapper
 import com.example.disneycharactersapp.ui.detail.DetailUiData
@@ -28,7 +26,7 @@ abstract class DisneyCharactersMapperModule {
 
     @Binds
     @ViewModelScoped
-    abstract fun disneyMapper(disneyCharacterListMapperImp: DisneyCharacterDomainListMapperImp): DisneyCharacterListMapper<CharacterData, DisneyCharactersEntity>
+    abstract fun disneyMapper(disneyCharacterListMapperImp: DisneyCharacterDomainListMapperImp): DisneyCharacterListMapper<CharacterResponse, DisneyCharactersEntity>
 
     @Binds
     @ViewModelScoped
@@ -37,7 +35,7 @@ abstract class DisneyCharactersMapperModule {
 
     @Binds
     @ViewModelScoped
-    abstract fun disneySearchCharacterMapper(searchCharacterDomainListMapperImp: SearchCharacterDomainListMapperImp): DisneySearchCharacterListMapper<FilterData, DisneyCharactersEntity>
+    abstract fun disneySearchCharacterMapper(searchCharacterDomainListMapperImp: SearchCharacterDomainListMapperImp): DisneyCharacterListMapper<FilterData, DisneyCharactersEntity>
 
     @Binds
     @ViewModelScoped

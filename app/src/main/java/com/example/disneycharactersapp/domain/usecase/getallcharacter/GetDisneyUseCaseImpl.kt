@@ -1,7 +1,7 @@
 package com.example.disneycharactersapp.domain.usecase.getallcharacter
 
 import com.example.disneycharactersapp.data.NetworkResponse
-import com.example.disneycharactersapp.data.dto.allcharacter.CharacterData
+import com.example.disneycharactersapp.data.dto.character.CharacterResponse
 import com.example.disneycharactersapp.data.repository.DisneyRepository
 import com.example.disneycharactersapp.domain.DisneyCharactersEntity
 import com.example.disneycharactersapp.domain.mapper.allcharacter.DisneyCharacterListMapper
@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 class GetDisneyUseCaseImpl @Inject constructor(
     private val disneyRepository: DisneyRepository,
-    private val disneyCharacterListMapper: DisneyCharacterListMapper<CharacterData, DisneyCharactersEntity>,
+    private val disneyCharacterResponseListMapper: DisneyCharacterListMapper<CharacterResponse, DisneyCharactersEntity>,
 ) : GetDisneyUseCase {
     override fun invoke(): Flow<NetworkResponse<List<DisneyCharactersEntity>>> = flow {
         emit(NetworkResponse.Loading)
@@ -20,7 +20,7 @@ class GetDisneyUseCaseImpl @Inject constructor(
             is NetworkResponse.Loading -> Unit
             is NetworkResponse.Success -> emit(
                 NetworkResponse.Success(
-                    disneyCharacterListMapper.map(
+                    disneyCharacterResponseListMapper.map(
                         response.result
                     )
                 )

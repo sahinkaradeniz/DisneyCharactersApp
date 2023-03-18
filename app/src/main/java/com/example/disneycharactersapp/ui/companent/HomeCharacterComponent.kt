@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import com.example.disneycharactersapp.databinding.CharacterHomeComponentBinding
 import com.example.disneycharactersapp.ui.home.HomeUiData
-import com.example.disneycharactersapp.util.loadUrl
+import com.example.disneycharactersapp.util.downloadFromUrl
 
 class HomeCharacterComponent @JvmOverloads constructor(
     context: Context,
@@ -19,7 +19,7 @@ class HomeCharacterComponent @JvmOverloads constructor(
         addView(_binding.root)
     }
     fun setCharacterData(homeUiData: HomeUiData){
-        _binding.imageView.loadUrl(
+        _binding.imageView.downloadFromUrl(
             homeUiData.imageUrl
         )
         _binding.nameText.text=homeUiData.name

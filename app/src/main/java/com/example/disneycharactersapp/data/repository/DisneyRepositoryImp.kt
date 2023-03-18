@@ -2,7 +2,6 @@ package com.example.disneycharactersapp.data.repository
 
 import android.util.Log
 import com.example.disneycharactersapp.data.NetworkResponse
-import com.example.disneycharactersapp.data.dto.allcharacter.CharacterData
 import com.example.disneycharactersapp.data.dto.character.CharacterResponse
 import com.example.disneycharactersapp.data.dto.filtercharacter.FilterData
 import com.example.disneycharactersapp.data.source.RemoteDataSource
@@ -11,14 +10,13 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-import kotlin.math.log
 
 class DisneyRepositoryImp @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) : DisneyRepository {
     val TAG =" Disney Repository Impl"
-    override suspend fun getAllDisneyCharacters(): NetworkResponse<List<CharacterData>> =
+    override suspend fun getAllDisneyCharacters(): NetworkResponse<List<CharacterResponse>> =
         withContext(ioDispatcher) {
             try {
                 remoteDataSource.getAllDisneyCharacters()
