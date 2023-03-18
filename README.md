@@ -6,7 +6,7 @@ HOME SCREEN | DETAİL SCREEN | DETAİL SCREEN |
 --- | --- | --- | 
 ![Uygulama Ekran Görüntüsü](https://user-images.githubusercontent.com/85341568/225892455-29183c28-ed0b-4398-a58c-a710e9454a54.png) |![Uygulama Ekran Görüntüsü](https://user-images.githubusercontent.com/85341568/225892463-1ca2faef-f3c2-4037-8e44-bc0b971d149c.png) |![Uygulama Ekran Görüntüsü](https://user-images.githubusercontent.com/85341568/225892468-6ace2dd4-9c69-4eb7-b458-e76b747721bc.png) |
 
-## Project Tech stack & Open-source libraries
+## Project Tech stack 
 
 - [Kotlin](https://developer.android.com/kotlin)
  
@@ -50,6 +50,49 @@ Thanks to Clean Architecture, we can write clean, tested and maintained, rearran
 
 - Use Casses: Clean Architecture approach is thought to be considered independent of business logic and business processes, system components and technical details. Therefore, Use Case is used. Each usage situation performs a function in the system and is for a particular purpose. Use Case conducts a task for business logic and business processes and plays an important role in system design.
 
-- Domain: Laytities, Value Object, Exceptions, and Logic Operations Are In this layer.
+- Repository : The Repository pattern helps to make the application code more modular, tested and easy to maintain by abstracting access to the data source from other layers of the application (user interface, business logic, etc.). For example, when the application needs to change its access to a data source (for example, when it decides to use a web service instead of a database), it can only make this change in the repository class in the data access layer and do not need to change other layers of the application
 
-- Repository : The Repository pattern helps to make the application code more modular, tested and easy to maintain by abstracting access to the data source from other layers of the application (user interface, business logic, etc.). For example, when the application needs to change its access to a data source (for example, when it decides to use a web service instead of a database), it can only make this change in the repository class in the data access layer and do not need to change other layers of the applicatio
+
+ ## Project Graph
+ 
+##### Main packages of this project
+
+ <img width="344" alt="Ekran Resmi 2023-03-18 11 13 55" src="https://user-images.githubusercontent.com/85341568/226093937-7f5ea02c-18ed-4790-86ed-56188ec2b698.png">
+ 
+ ### [Data Layer](https://developer.android.com/topic/architecture/data-layer)
+ 
+ -  This layer performs operations to retrieve data from data sources and to write data to data sources. When retrieving data from data sources, it may process, filter, sort, and organize the data as necessary. The data layer typically includes data access objects (DAOs) and data source processing classes. This layer is completely independent from the other layers of the application and acts based on requests from other layers.
+ 
+![Data Layer (1)](https://user-images.githubusercontent.com/85341568/226093831-e64ae864-a2de-419a-97cc-479bbccfd41d.jpg)
+ 
+ ### [Domain Layer](https://developer.android.com/topic/architecture/domain-layer)
+ 
+ - This layer contains the core business logic and entity models on which the application functionality is focused. In this layer, application features and functionalities are identified, and their requirements and use cases are analyzed. Usually, the business processes and rules are defined in the classes and methods of this layer. The domain layer does not include interaction with the external world (user interface, database operations, etc.) and is completely independent, so it can be integrated or replaced with another application.
+ 
+![Data Layer (3)](https://user-images.githubusercontent.com/85341568/226094960-64c15987-1851-4ced-b877-b149bb37b959.jpg)
+
+ ### [Ui Layer](https://developer.android.com/topic/architecture/ui-layer)
+ 
+ - This layer provides the design and functionality of the user interface. The user interface typically collects input from the user to process and displays results to the user. The user interface can communicate with other layers of the application and pass user actions to the application layers. This layer includes user interface components (activity, fragment, view, adapter, etc.) and classes that handle user events. 
+
+![Data Layer (4)](https://user-images.githubusercontent.com/85341568/226097545-022eb787-b7a7-47d6-ae2c-9a70c83ef231.jpg)
+
+## License
+
+```license
+Copyright 2023 Sahin Karadeniz
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+ 
+ 
