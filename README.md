@@ -1,5 +1,5 @@
 # DisneyCharactersApp
-This is a app for the understanding about Clean Architecture and Kotlin 
+This is an application to understand Clean Architecture and Kotlin technologies.
 
 ## Project Screens
 HOME SCREEN | DETAİL SCREEN | DETAİL SCREEN | 
@@ -54,6 +54,8 @@ Thanks to Clean Architecture, we can write clean, tested and maintained, rearran
 
 
  ## Project Graph
+ 
+ - This app uses [MVVM (Model View View-Model)](https://developer.android.com/topic/architecture#recommended-app-arch) architecture
  
 ##### Main packages of this project
 
