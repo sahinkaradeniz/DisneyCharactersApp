@@ -80,6 +80,7 @@ Thanks to Clean Architecture, we can write clean, tested and maintained, rearran
 ![Data Layer (4)](https://user-images.githubusercontent.com/85341568/226097545-022eb787-b7a7-47d6-ae2c-9a70c83ef231.jpg)
 
 ## License
+```license
 MIT License
 
 Copyright (c) 2023 Sahin Karadeniz 
