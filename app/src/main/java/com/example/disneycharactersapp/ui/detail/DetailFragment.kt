@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -45,10 +46,10 @@ class DetailFragment : BaseFragment() {
         viewModel.detailUiState.observe(viewLifecycleOwner){
             when(it){
                 is DetailUiState.Loading ->{
-                   viewLoading()
+                   progressShow()
                 }
                 is DetailUiState.Success ->{
-                    viewSucces()
+                  progressGone()
                     setDetailData(it.data)
                     println(" data " + it.data.toString())
                     adapter.submitList(
@@ -69,13 +70,14 @@ class DetailFragment : BaseFragment() {
         }
     }
 
-    private fun viewLoading(){
+
+    private fun progressGone(){
+       hideProgress()
+        binding.root.visible()
+    }
+    private fun progressShow(){
         showProgress()
         binding.root.gone()
-    }
-    private fun viewSucces(){
-        hideProgress()
-        binding.root.visible()
     }
     private fun back(){
         binding.backButton.setOnClickListener {

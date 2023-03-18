@@ -8,7 +8,7 @@ import com.example.disneycharactersapp.data.dto.filtercharacter.FilterData
 import javax.inject.Inject
 
 class RemoteDataSourceImp @Inject constructor (private val disneyCharactersApi: DisneyCharactersApi):RemoteDataSource {
-    val TAG =" Remote Data Source Impl"
+    private val TAG = this::class.java.simpleName
     override suspend fun getAllDisneyCharacters(): NetworkResponse<List<CharacterResponse>> =
        try {
             val response=disneyCharactersApi.getAllCharacters()

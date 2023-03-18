@@ -24,7 +24,6 @@ class HomeViewModel @Inject constructor(
 
     private val _disneyHomeUiState=MutableLiveData<HomeUiState>()
     val disneyHomeUiState:LiveData<HomeUiState>  get() = _disneyHomeUiState
-
     var allDisneyCharacters: List<HomeUiData>? = null
 
     fun searchDisneyCharacters(name: String) {

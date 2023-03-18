@@ -2,6 +2,7 @@ package com.example.disneycharactersapp.util
 
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.EditText
 import kotlinx.coroutines.*
 
 class SearchTextWatcher(
@@ -26,4 +27,12 @@ class SearchTextWatcher(
 
     override fun afterTextChanged(p0: Editable?) {}
 
+}
+fun EditText.setOnSearchListener(content: (String) -> Unit) {
+    addTextChangedListener(
+        SearchTextWatcher {
+            if(this.hasFocus())
+                content(it)
+        }
+    )
 }

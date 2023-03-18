@@ -15,7 +15,7 @@ class DisneyRepositoryImp @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) : DisneyRepository {
-    val TAG =" Disney Repository Impl"
+    private val TAG = this::class.java.simpleName
     override suspend fun getAllDisneyCharacters(): NetworkResponse<List<CharacterResponse>> =
         withContext(ioDispatcher) {
             try {
