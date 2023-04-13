@@ -16,7 +16,6 @@ fun <T : ViewBinding> Fragment.viewBinding(factory: (View) -> T): ReadOnlyProper
 
         override fun getValue(thisRef: Fragment, property: KProperty<*>): T =
             binding ?: factory(requireView()).also {
-                // if binding is accessed after Lifecycle is DESTROYED, create new instance, but don't cache it
                 if (viewLifecycleOwner.lifecycle.currentState.isAtLeast(Lifecycle.State.INITIALIZED)) {
                     viewLifecycleOwner.lifecycle.addObserver(this)
                     binding = it

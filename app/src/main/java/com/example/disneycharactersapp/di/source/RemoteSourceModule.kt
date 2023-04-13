@@ -14,5 +14,5 @@ abstract class RemoteSourceModule {
 
     @Binds
     @ViewModelScoped
-    abstract fun bindRickAndMortyRemoteSource(remoteDataSourceImp: RemoteDataSourceImp): RemoteDataSource
+    abstract fun bindDisneyRemoteSource(remoteDataSourceImp: RemoteDataSourceImp): RemoteDataSource
 }

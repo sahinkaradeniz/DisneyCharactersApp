@@ -20,7 +20,7 @@ class GetDisneyUseCaseImpl @Inject constructor(
             is NetworkResponse.Loading -> Unit
             is NetworkResponse.Success -> emit(
                 NetworkResponse.Success(
-                    disneyCharacterResponseListMapper.map(
+                    disneyCharacterResponseListMapper. map(
                         response.result
                     )
                 )
