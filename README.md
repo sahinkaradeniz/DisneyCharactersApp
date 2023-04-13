@@ -18,7 +18,7 @@ HOME SCREEN | DETAİL SCREEN | DETAİL SCREEN |
  
 - [Dependency Injection with Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
 
-- [Navigation Componenet](https://developer.android.com/guide/navigation)
+- [Navigation Component](https://developer.android.com/guide/navigation)
 
 - [Retrofit](https://square.github.io/retrofit/)
 
